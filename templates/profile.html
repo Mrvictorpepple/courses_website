@@ -1,0 +1,281 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile | EduStream</title>
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <h1>EduStream</h1>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="{% url "index" %}">Home</a></li>
+          <li><a href="{% url "courses" %}">Courses</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <div class="user-menu" id="user-menu">
+          <button class="user-menu-toggle" id="user-menu-toggle">
+            <span class="user-initial">J</span>
+          </button>
+          <div class="dropdown-menu">
+            <a href="{% url "dashboard" %}">Dashboard</a>
+            <a href="{% url "profile" %}" class="active">Profile</a>
+            <a href="{% url "auth:logout" %}" id="logout-btn">Logout</a>
+          </div>
+        </div>
+      </div>
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="profile-layout">
+    <aside class="profile-sidebar">
+      <nav class="profile-nav">
+        <ul>
+          <li>
+            <a href="#personal-info" class="active">
+              <span class="nav-icon">👤</span>
+              Personal Info
+            </a>
+          </li>
+          <li>
+            <a href="#subscription">
+              <span class="nav-icon">💳</span>
+              Subscription
+            </a>
+          </li>
+          <li>
+            <a href="#notifications">
+              <span class="nav-icon">🔔</span>
+              Notifications
+            </a>
+          </li>
+          <li>
+            <a href="#security">
+              <span class="nav-icon">🔒</span>
+              Security
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="profile-main">
+      <section class="profile-section active" id="personal-info">
+        <h2>Personal Information</h2>
+        
+        <div class="profile-avatar">
+          <div class="avatar-preview">
+            <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg" alt="Profile picture" id="avatar-image">
+          </div>
+          <div class="avatar-actions">
+            <button class="btn btn-secondary" id="change-avatar">Change Picture</button>
+            <input type="file" id="avatar-upload" accept="image/*" class="hidden">
+          </div>
+        </div>
+        
+        <form id="profile-form" class="profile-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" value="John Smith">
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" value="john@example.com">
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="location">Location</label>
+              <input type="text" id="location" name="location" placeholder="City, Country">
+            </div>
+            
+            <div class="form-group">
+              <label for="timezone">Timezone</label>
+              <select id="timezone" name="timezone">
+                <option value="UTC-8">Pacific Time (UTC-8)</option>
+                <option value="UTC-5">Eastern Time (UTC-5)</option>
+                <option value="UTC+0">UTC</option>
+                <option value="UTC+1">Central European Time (UTC+1)</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="bio">Bio</label>
+            <textarea id="bio" name="bio" rows="4" placeholder="Tell us about yourself..."></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+        </form>
+      </section>
+
+      <section class="profile-section" id="subscription">
+        <h2>Subscription Details</h2>
+        
+        <div class="subscription-status active">
+          <div class="status-header">
+            <span class="status-badge">Active</span>
+            <h3>Lifetime Access</h3>
+          </div>
+          <p>You have unlimited access to all courses on EduStream.</p>
+          <p class="subscription-date">Purchased on January 15, 2025</p>
+        </div>
+        
+        <div class="subscription-features">
+          <h3>Your Benefits</h3>
+          <ul>
+            <li>✓ Access to all current courses</li>
+            <li>✓ Access to future courses</li>
+            <li>✓ Course downloads</li>
+            <li>✓ Course discussions</li>
+            <li>✓ Course certificates</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="profile-section" id="notifications">
+        <h2>Notification Preferences</h2>
+        
+        <form id="notifications-form" class="notifications-form">
+          <div class="notification-group">
+            <h3>Email Notifications</h3>
+            
+            <label class="checkbox-label">
+              <input type="checkbox" name="course-updates" checked>
+              <span>Course updates and announcements</span>
+            </label>
+            
+            <label class="checkbox-label">
+              <input type="checkbox" name="new-courses" checked>
+              <span>New course recommendations</span>
+            </label>
+            
+            <label class="checkbox-label">
+              <input type="checkbox" name="comments" checked>
+              <span>Replies to your comments</span>
+            </label>
+            
+            <label class="checkbox-label">
+              <input type="checkbox" name="newsletter">
+              <span>Monthly newsletter</span>
+            </label>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Save Preferences</button>
+        </form>
+      </section>
+
+      <section class="profile-section" id="security">
+        <h2>Security Settings</h2>
+        
+        <form id="password-form" class="security-form">
+          <h3>Change Password</h3>
+          
+          <div class="form-group">
+            <label for="current-password">Current Password</label>
+            <input type="password" id="current-password" name="current-password" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="new-password">New Password</label>
+            <input type="password" id="new-password" name="new-password" required>
+            <p class="form-hint">Must be at least 8 characters long</p>
+          </div>
+          
+          <div class="form-group">
+            <label for="confirm-new-password">Confirm New Password</label>
+            <input type="password" id="confirm-new-password" name="confirm-new-password" required>
+          </div>
+          
+          <button type="submit" class="btn btn-primary">Update Password</button>
+        </form>
+        
+        <div class="security-section">
+          <h3>Two-Factor Authentication</h3>
+          <p>Add an extra layer of security to your account.</p>
+          <button class="btn btn-secondary" id="setup-2fa">Set Up 2FA</button>
+        </div>
+        
+        <div class="security-section">
+          <h3>Active Sessions</h3>
+          <div class="sessions-list">
+            <div class="session-item current">
+              <div class="session-info">
+                <h4>Current Session</h4>
+                <p>Chrome on Windows • IP: 192.168.1.1</p>
+              </div>
+              <span class="session-status">Active Now</span>
+            </div>
+            
+            <div class="session-item">
+              <div class="session-info">
+                <h4>Safari on iPhone</h4>
+                <p>Last active: 2 days ago</p>
+              </div>
+              <button class="btn btn-text">End Session</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3>EduStream</h3>
+          <p>Premium online learning platform with expert-led courses and clear learning paths.</p>
+        </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="{% url "index" %}">Home</a></li>
+            <li><a href="{% url "courses" %}">Courses</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook">Facebook</a>
+            <a href="#" aria-label="Twitter">Twitter</a>
+            <a href="#" aria-label="Instagram">Instagram</a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 EduStream. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/app.js' %}"></script>
+  <script src="{% static 'js/profile.js' %}"></script>
+</body>
+</html>

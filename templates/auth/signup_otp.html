@@ -1,0 +1,86 @@
+<!-- templates/auth/signup_otp.html -->
+<form method="post">
+    {% csrf_token %}
+    <p>Enter the OTP sent to {{ email }}</p>
+    <input type="text" name="otp" placeholder="Enter OTP">
+    <button type="submit">Verify OTP</button>
+    {% if messages %}
+  <div class="django-messages">
+    {% for message in messages %}
+      <div class="message {{ message.tags }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+</form>
+
+<!-- Resend OTP Button -->
+<div>
+    <button id="resendBtn" disabled>Resend OTP (60)</button>
+</div>
+
+<!-- JavaScript Timer + AJAX Handler -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const resendBtn = document.getElementById('resendBtn');
+        let timeLeft = 60;
+
+        // Initialize countdown
+        let countdown = setInterval(() => {
+            if (timeLeft > 0) {
+                resendBtn.textContent = `Resend OTP (${timeLeft})`;
+                timeLeft--;
+            } else {
+                clearInterval(countdown);
+                resendBtn.disabled = false;
+                resendBtn.textContent = 'Resend OTP';
+            }
+        }, 1000);
+
+        // Handle resend OTP click
+        resendBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            resendBtn.disabled = true;
+            resendBtn.textContent = `Resend OTP (${timeLeft})`;
+
+            fetch('{% url "auth:resend_otp" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: 'email={{ email }}'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    alert('New OTP sent!');
+                    // Reset the timer
+                    timeLeft = 60;
+                    resendBtn.disabled = true;
+                    clearInterval(countdown);
+                    countdown = setInterval(() => {
+                        if (timeLeft > 0) {
+                            resendBtn.textContent = `Resend OTP (${timeLeft})`;
+                            timeLeft--;
+                        } else {
+                            clearInterval(countdown);
+                            resendBtn.disabled = false;
+                            resendBtn.textContent = 'Resend OTP';
+                        }
+                    }, 1000);
+                } else {
+                    alert('Failed to resend OTP. Please try again.');
+                    resendBtn.disabled = false;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again.');
+                resendBtn.disabled = false;
+            });
+        });
+    });
+</script>

@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certificates | EduStream</title>
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/certificates.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <h1>EduStream</h1>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="{% url "index" %}">Home</a></li>
+          <li><a href="{% url "courses" %}">Courses</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <div class="user-menu" id="user-menu">
+          <button class="user-menu-toggle" id="user-menu-toggle">
+            <span class="user-initial">J</span>
+          </button>
+          <div class="dropdown-menu">
+            <a href="{% url "dashboard" %}">Dashboard</a>
+            <a href="{% url "profile" %}">Profile</a>
+            <a href="{% url "auth:logout" %}" id="logout-btn">Logout</a>
+          </div>
+        </div>
+      </div>
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="dashboard-layout">
+    <aside class="dashboard-sidebar">
+      <nav class="dashboard-nav">
+        <ul>
+          <li>
+            <a href="dashboard.html">
+              <span class="nav-icon">📊</span>
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a href="in-progress.html">
+              <span class="nav-icon">🎯</span>
+              In Progress
+            </a>
+          </li>
+          <li>
+            <a href="certificates.html" class="active">
+              <span class="nav-icon">🎓</span>
+              Certificates
+            </a>
+          </li>
+          <li>
+            <a href="bookmarks.html">
+              <span class="nav-icon">🔖</span>
+              Bookmarks
+            </a>
+          </li>
+          <li>
+            <a href="profile.html">
+              <span class="nav-icon">👤</span>
+              Profile
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="dashboard-main">
+      <div class="dashboard-header">
+        <h1>My Certificates</h1>
+        <p>View and download your course completion certificates</p>
+      </div>
+
+      <div class="certificates-grid" id="certificates-container">
+        <!-- Certificates will be loaded here via JavaScript -->
+        <div class="certificate-card skeleton"></div>
+        <div class="certificate-card skeleton"></div>
+        <div class="certificate-card skeleton"></div>
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3>EduStream</h3>
+          <p>Premium online learning platform with expert-led courses and clear learning paths.</p>
+        </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="{% url "index" %}">Home</a></li>
+            <li><a href="{% url "courses" %}">Courses</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook">Facebook</a>
+            <a href="#" aria-label="Twitter">Twitter</a>
+            <a href="#" aria-label="Instagram">Instagram</a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 EduStream. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+    <script src="{% static 'js/app.js' %}"></script>
+  <script src="{% static 'js/certificates.js' %}"></script>
+</body>
+</html>

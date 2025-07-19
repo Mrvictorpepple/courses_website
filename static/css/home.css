@@ -1,0 +1,203 @@
+/* Home Page Specific Styles */
+
+/* Hero Section */
+.hero {
+  padding: var(--space-16) 0;
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+
+.hero .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.hero-content {
+  max-width: 540px;
+}
+
+.hero-title {
+  font-size: var(--font-size-5xl);
+  margin-bottom: var(--space-4);
+  line-height: 1.1;
+  color: var(--color-gray-900);
+}
+
+.hero-subtitle {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-8);
+  color: var(--color-gray-600);
+  line-height: 1.5;
+}
+
+.hero-image {
+  position: relative;
+  height: 100%;
+  max-height: 500px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Features Section */
+.features {
+  padding: var(--space-20) 0;
+  background-color: var(--color-gray-50);
+}
+
+/* Popular Courses Section */
+.popular-courses {
+  padding: var(--space-20) 0;
+}
+
+/* Testimonials Section */
+.testimonials {
+  padding: var(--space-20) 0;
+  background-color: var(--color-gray-100);
+}
+
+.testimonials-slider {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.testimonial-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-lg);
+  margin: 0 var(--space-4);
+}
+
+.testimonial-content {
+  font-size: var(--font-size-lg);
+  color: var(--color-gray-800);
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: var(--space-6);
+}
+
+.testimonial-content::before,
+.testimonial-content::after {
+  content: '"';
+  color: var(--color-primary);
+  font-size: 1.5em;
+  font-weight: var(--font-weight-bold);
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.testimonial-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial-author h4 {
+  margin-bottom: var(--space-1);
+  font-size: var(--font-size-base);
+}
+
+.testimonial-author p {
+  margin-bottom: 0;
+  color: var(--color-gray-600);
+  font-size: var(--font-size-sm);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.fade-in-delay-1 {
+  animation: fadeIn 0.8s 0.2s ease forwards;
+  opacity: 0;
+}
+
+.fade-in-delay-2 {
+  animation: fadeIn 0.8s 0.4s ease forwards;
+  opacity: 0;
+}
+
+.fade-in-delay-3 {
+  animation: fadeIn 0.8s 0.6s ease forwards;
+  opacity: 0;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .hero .container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .hero-content {
+    max-width: 100%;
+    order: 1;
+  }
+  
+  .hero-title {
+    font-size: var(--font-size-4xl);
+  }
+  
+  .hero-image {
+    margin-bottom: var(--space-8);
+    order: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: var(--space-10) 0;
+  }
+  
+  .hero-title {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .hero-subtitle {
+    font-size: var(--font-size-lg);
+  }
+  
+  .features, 
+  .popular-courses, 
+  .testimonials {
+    padding: var(--space-12) 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .hero-subtitle {
+    font-size: var(--font-size-base);
+    margin-bottom: var(--space-6);
+  }
+}

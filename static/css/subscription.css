@@ -1,0 +1,315 @@
+/* Subscription Page Specific Styles */
+
+/* Subscription Section */
+.subscription-section {
+  padding: var(--space-12) 0;
+}
+
+.subscription-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Subscription Benefits */
+.subscription-benefits {
+  padding: var(--space-8);
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.subscription-benefits h2 {
+  margin-bottom: var(--space-8);
+}
+
+.benefits-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.benefits-list li {
+  display: flex;
+  margin-bottom: var(--space-6);
+  transition: transform 0.3s ease;
+}
+
+.benefits-list li:hover {
+  transform: translateX(5px);
+}
+
+.benefit-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 50%;
+  margin-right: var(--space-4);
+}
+
+.benefit-content h3 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-1);
+}
+
+.benefit-content p {
+  color: var(--color-gray-600);
+  margin-bottom: 0;
+}
+
+/* Payment Container */
+.payment-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.payment-card {
+  padding: var(--space-8);
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.price-header {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.price-badge {
+  display: inline-block;
+  padding: var(--space-2) var(--space-4);
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-4);
+}
+
+.price-amount {
+  font-size: 4rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-gray-900);
+  line-height: 1;
+  margin-bottom: var(--space-2);
+}
+
+.currency {
+  font-size: 2rem;
+  vertical-align: super;
+}
+
+.price-desc {
+  color: var(--color-gray-600);
+  margin-bottom: 0;
+}
+
+/* Payment Form */
+.paystack-note {
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  color: var(--color-gray-700);
+}
+.paystack-section {
+  text-align: center;
+  padding: var(--space-6);
+}
+
+.paystack-section p {
+  font-size: 1.1rem;
+  margin-bottom: var(--space-4);
+}
+
+.paystack-section .btn {
+  font-size: 1.1rem;
+  padding: var(--space-3) var(--space-6);
+}
+
+/* Login Prompt */
+.login-prompt {
+  text-align: center;
+  padding: var(--space-8) var(--space-4);
+  background-color: var(--color-gray-50);
+  border-radius: var(--radius-lg);
+}
+
+.login-prompt p {
+  margin-bottom: var(--space-4);
+  color: var(--color-gray-700);
+}
+
+.login-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-4);
+}
+
+/* Testimonial Card */
+.testimonial-card {
+  padding: var(--space-6);
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border-left: 4px solid var(--color-primary);
+}
+
+.testimonial-content {
+  font-style: italic;
+  color: var(--color-gray-700);
+  margin-bottom: var(--space-4);
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonial-author h4 {
+  margin-bottom: var(--space-1);
+  font-size: var(--font-size-base);
+}
+
+.testimonial-author p {
+  margin-bottom: 0;
+  color: var(--color-gray-600);
+  font-size: var(--font-size-sm);
+}
+
+/* FAQ Section */
+.faq-section {
+  padding: var(--space-16) 0;
+  background-color: var(--color-gray-50);
+}
+
+.faq-section h2 {
+  text-align: center;
+  margin-bottom: var(--space-10);
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background-color: var(--color-white);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.faq-item h3 {
+  margin-bottom: var(--space-2);
+  font-size: var(--font-size-lg);
+  color: var(--color-gray-900);
+}
+
+.faq-item p {
+  color: var(--color-gray-600);
+  margin-bottom: 0;
+}
+
+/* Button Animations */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.btn-primary:focus:not(:active)::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.5;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
+}
+
+/* Loading State */
+.hidden {
+  display: none;
+}
+
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+  margin-right: var(--space-2);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .subscription-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .subscription-section {
+    padding: var(--space-8) 0;
+  }
+  
+  .payment-card, 
+  .subscription-benefits {
+    padding: var(--space-6);
+  }
+}

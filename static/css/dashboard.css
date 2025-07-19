@@ -1,0 +1,239 @@
+/* Dashboard Page Specific Styles */
+
+/* Dashboard Layout */
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  background-color: var(--color-gray-50);
+}
+
+/* Dashboard Sidebar */
+.dashboard-sidebar {
+  background-color: var(--color-white);
+  border-right: 1px solid var(--color-gray-200);
+  padding: var(--space-6);
+}
+
+.dashboard-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard-nav a {
+  display: flex;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  color: var(--color-gray-700);
+  border-radius: var(--radius-md);
+  transition: var(--transition-base);
+}
+
+.dashboard-nav a:hover {
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-900);
+}
+
+.dashboard-nav a.active {
+  background-color: var(--color-primary-light);
+  color: white;
+}
+
+.nav-icon {
+  margin-right: var(--space-3);
+  font-size: var(--font-size-xl);
+}
+
+/* Dashboard Main Content */
+.dashboard-main {
+  padding: var(--space-8);
+}
+
+.dashboard-header {
+  margin-bottom: var(--space-8);
+}
+
+.dashboard-header h1 {
+  margin-bottom: var(--space-2);
+}
+
+.dashboard-header p {
+  color: var(--color-gray-600);
+}
+
+/* Dashboard Stats */
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.stat-card {
+  background-color: var(--color-white);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-card h3 {
+  color: var(--color-gray-600);
+  font-size: var(--font-size-base);
+  margin-bottom: var(--space-2);
+}
+
+.stat-number {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-gray-900);
+  margin: 0;
+}
+
+/* Dashboard Sections */
+.dashboard-section {
+  background-color: var(--color-white);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  margin-bottom: var(--space-8);
+}
+
+.dashboard-section h2 {
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+/* Course Progress Cards */
+.course-progress-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.course-progress-card {
+  background-color: var(--color-gray-50);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition-base);
+}
+
+.course-progress-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.progress-thumbnail {
+  position: relative;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+}
+
+.progress-thumbnail img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.progress-content {
+  padding: var(--space-4);
+}
+
+.progress-title {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-2);
+}
+
+.progress-meta {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-gray-600);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-3);
+}
+
+.progress-bar {
+  height: 8px;
+  background-color: var(--color-gray-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+/* Skeleton Loading */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-gray-200);
+}
+
+.skeleton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0,
+    rgba(255, 255, 255, 0.2) 20%,
+    rgba(255, 255, 255, 0.5) 60%,
+    rgba(255, 255, 255, 0)
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.course-progress-card.skeleton {
+  height: 300px;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .dashboard-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .course-progress-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .dashboard-sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .course-progress-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .dashboard-main {
+    padding: var(--space-4);
+  }
+}

@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up | EduStream</title>
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css" />
+
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <h1>EduStream</h1>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="{% url "index" %}">Home</a></li>
+          <li><a href="{% url "courses" %}">Courses</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a href="{% url "auth:login" %}" class="btn btn-secondary">Log In</a>
+        <a href="{% url "auth:signup" %}" class="btn btn-primary active">Sign Up</a>
+      </div>
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="auth-section">
+    <div class="container">
+      <div class="auth-container">
+        <div class="auth-box">
+          <h2>Create Your Account</h2>
+          <p>Join EduStream to start learning from expert instructors.</p>
+          
+          <form method="post" id="signup-form" class="auth-form">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="name">First Name</label>
+              <input type="text" id="name" name="first_name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="name">Last Name</label>
+              <input type="text" id="name" name="last_name" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone_number">Phone Number:</label>
+              <input type="tel" id="phone_number" name="phone_number" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" required>
+              <p class="form-hint">Must be at least 8 characters long</p>
+            </div>
+            
+            <div class="form-group">
+              <label for="confirm-password">Confirm Password</label>
+              <input type="password" id="confirm_password" name="confirm_password" required>
+            </div>
+            
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="terms" name="terms" required>
+                <span>I agree to the <a href="terms.html">Terms of Service</a> and <a href="privacy.html">Privacy Policy</a></span>
+              </label>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-large">
+              <span id="button-text">Create Account</span>
+              <span id="button-loading" class="hidden">
+                <span class="spinner"></span>
+                Creating account...
+              </span>
+            </button>
+          </form>
+          
+          <div class="auth-footer">
+            <p>Already have an account? <a href="{% url "auth:login" %}">Log in</a></p>
+            {% if messages %}
+  <div class="django-messages">
+    {% for message in messages %}
+      <div class="message {{ message.tags }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3>EduStream</h3>
+          <p>Premium online learning platform with expert-led courses and clear learning paths.</p>
+        </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="{% url "index" %}">Home</a></li>
+            <li><a href="{% url "courses" %}">Courses</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook">Facebook</a>
+            <a href="#" aria-label="Twitter">Twitter</a>
+            <a href="#" aria-label="Instagram">Instagram</a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 EduStream. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/app.js' %}"></script>
+  {% comment %} <script src="{% static 'js/auth.js' %}"></script> {% endcomment %}
+
+
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+<script>
+  const input = document.querySelector("#phone_number");
+  const iti = window.intlTelInput(input, {
+    initialCountry: "auto",
+    geoIpLookup: callback => {
+      fetch('https://ipinfo.io/json?token=<YOUR_TOKEN>')
+        .then(res => res.json())
+        .then(data => callback(data.country))
+        .catch(() => callback('us'));
+    },
+    utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/utils.js"
+  });
+
+  // Optional: get full number on form submit
+  document.querySelector("form").addEventListener("submit", function (e) {
+    const fullNumber = iti.getNumber();
+    console.log("Full phone number:", fullNumber);
+  });
+</script>
+
+</body>
+</html>
+

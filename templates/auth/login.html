@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In | EduStream</title>
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">
+        <h1>EduStream</h1>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="{% url "index" %}">Home</a></li>
+          <li><a href="{% url "courses" %}">Courses</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <a href="{% url "auth:login" %}" class="btn btn-secondary active">Log In</a>
+        <a href="{% url "auth:signup" %}" class="btn btn-primary">Sign Up</a>
+      </div>
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="auth-section">
+    <div class="container">
+      <div class="auth-container">
+        <div class="auth-box">
+          <h2>Welcome Back</h2>
+          <p>Log in to access your courses and track your progress.</p>
+          
+          <form method="POST" id="login-form" class="auth-form">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" required>
+              <a href="forgot-password.html" class="forgot-password">Forgot password?</a>
+            </div>
+            
+            <div class="form-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="remember-me" name="remember-me">
+                <span>Remember me</span>
+              </label>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-large">
+              <span id="button-text">Log In</span>
+              <span id="button-loading" class="hidden">
+                <span class="spinner"></span>
+                Logging in...
+              </span>
+            </button>
+          </form>
+          
+          <div class="auth-footer">
+            <p>Don't have an account? <a href="{% url "auth:signup" %}">Sign up</a></p>
+            {% if messages %}
+  <div class="django-messages">
+    {% for message in messages %}
+      <div class="message {{ message.tags }}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3>EduStream</h3>
+          <p>Premium online learning platform with expert-led courses and clear learning paths.</p>
+        </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="{% url "index" %}">Home</a></li>
+            <li><a href="{% url 'courses' %}">Courses</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h4>Connect</h4>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook">Facebook</a>
+            <a href="#" aria-label="Twitter">Twitter</a>
+            <a href="#" aria-label="Instagram">Instagram</a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 EduStream. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/app.js' %}"></script>
+  {% comment %} <script src="{% static 'js/auth.js' %}"></script> {% endcomment %}
+</body>
+</html>
