@@ -139,7 +139,7 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 EMAIL_PORT = 587 
 EMAIL_HOST_USER = "mrvictorpepple@gmail.com"
-EMAIL_HOST_PASSWORD = "rryexhdupgkhzsvv"
+EMAIL_HOST_PASSWORD = "dfdfsvvsvsddffvfvdf"
 
 
 PAYSTACK_SECRET_KEY = "sk_test_3a077c9d5cba910e86067e99f8d6803c966cdc39"
